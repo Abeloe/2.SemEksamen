@@ -1,0 +1,29 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Eksamen2Semester.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:VM="using:Eksamen2Semester.VM"
+    x:Class="Eksamen2Semester.View.KursusBooking"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <VM:KursusOprettelseVM/>
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button x:Name="button" Content="Forside" HorizontalAlignment="Left" Margin="55,13,0,0" VerticalAlignment="Top" Width="140" Height="52" Command="{Binding NavigateForsideCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock x:Name="VælgKursus" HorizontalAlignment="Left" Margin="480,85,0,0" TextWrapping="Wrap" Text="Vælg Kursus" VerticalAlignment="Top" Height="40" Width="160"/>
+        <TextBlock x:Name="Lokation" HorizontalAlignment="Left" Margin="480,220,0,0" TextWrapping="Wrap" Text="Vælg Lokation" VerticalAlignment="Top" Height="40" Width="160"/>
+        <TextBlock x:Name="AntalDeltagere" HorizontalAlignment="Left" Margin="480,385,0,0" TextWrapping="Wrap" Text="Maks antal deltagere" VerticalAlignment="Top" Height="40" Width="160"/>
+        <TextBlock x:Name="VælgLokale" HorizontalAlignment="Left" Margin="940,85,0,0" TextWrapping="Wrap" Text="Vælg lokale" VerticalAlignment="Top" Height="40" Width="160"/>
+        <ComboBox x:Name="Kursus" HorizontalAlignment="Left" Margin="480,130,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding KursusNavnListe, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding BookName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox x:Name="VælgLokation" HorizontalAlignment="Left" Margin="480,298,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding LokationListe, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding LokationKO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ListView x:Name="Lokaler" HorizontalAlignment="Left" Height="295" Margin="940,220,0,0" VerticalAlignment="Top" Width="205"  ItemsSource="{Binding LokaleOC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding BookLokale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <AppBarButton x:Name="BookKursus" HorizontalAlignment="Left" Icon="Accept" Label="Book Kursus" Margin="1027,599,0,0" VerticalAlignment="Top" Width="118" Command="{Binding BookCommand}"/>
+        <TextBox x:Name="DeltagerAntal" HorizontalAlignment="Left" Margin="480,515,0,0" TextWrapping="Wrap" Text="{Binding TempBookDeltagerAntal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <DatePicker HorizontalAlignment="Left" Margin="27,262,0,0" VerticalAlignment="Top" Date="{Binding BookDateTime, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+    </Grid>
+</Page>
